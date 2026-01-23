@@ -36,19 +36,11 @@ public class OfficeInfoActivity extends AppCompatActivity {
         });
 
         findViewById(R.id.btn_map).setOnClickListener(v -> {
-
-            Uri gmmIntentUri = Uri.parse("geo:0,0?q=" + Uri.encode(office.getAddress()));
-            Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
+            String uri = "geo:0,0?q=" + Uri.encode(office.getAddress());
+            Intent mapIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(uri));
             mapIntent.setPackage("com.google.android.apps.maps");
-
-            // Проверяем безопасно
             if (mapIntent.resolveActivity(getPackageManager()) != null) {
                 startActivity(mapIntent);
-            } else {
-                // Fallback: открыть в браузере
-                Uri browserUri = Uri.parse("https://www.google.com/maps/search/?api=1&query=" + Uri.encode(office.getAddress()));
-                Intent browserIntent = new Intent(Intent.ACTION_VIEW, browserUri);
-                startActivity(browserIntent);
             }
         });
     }
