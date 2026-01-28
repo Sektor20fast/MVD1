@@ -22,13 +22,13 @@ public class OfficeInfoActivity extends AppCompatActivity {
         TextView address = findViewById(R.id.office_address);
         TextView hours = findViewById(R.id.office_hours);
         TextView phone = findViewById(R.id.office_phone);
-        TextView email = findViewById(R.id.office_email);
+
 
         name.setText(office.getName());
         address.setText(office.getAddress());
         hours.setText(office.getWorkHours());
         phone.setText(office.getPhone());
-        email.setText(office.getEmail());
+
 
         findViewById(R.id.btn_call).setOnClickListener(v -> {
             Intent call = new Intent(Intent.ACTION_DIAL, Uri.parse("tel:" + office.getPhone()));
@@ -36,12 +36,11 @@ public class OfficeInfoActivity extends AppCompatActivity {
         });
 
         findViewById(R.id.btn_map).setOnClickListener(v -> {
-            String uri = "geo:0,0?q=" + Uri.encode(office.getAddress());
-            Intent mapIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(uri));
-            mapIntent.setPackage("com.google.android.apps.maps");
-            if (mapIntent.resolveActivity(getPackageManager()) != null) {
-                startActivity(mapIntent);
-            }
+            Intent intent = new Intent();
+            intent.setAction(Intent.ACTION_VIEW);
+            intent.setData(Uri.parse("geo:56.8733359089947, 35.900520009468636"));
+            startActivity(intent);
+
         });
     }
 }
