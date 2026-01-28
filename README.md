@@ -47,6 +47,6 @@
 | Архитектура       | Activity + RecyclerView |
 | Хранение данных   | Локальный `data.json` в `assets/` |
 | Сетевые запросы   | Не используются |
-| Зависимости       | Gson, RecyclerView, CardView |
+| Зависимости       | Json, RecyclerView, CardView |
 
 ---
